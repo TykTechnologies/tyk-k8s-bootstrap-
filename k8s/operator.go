@@ -8,11 +8,12 @@ import (
 )
 
 const (
-	tykModePro = "pro"
-	tykModeKey = "TYK_MODE"
-	tykAuthKey = "TYK_AUTH"
-	tykOrgKey  = "TYK_ORG"
-	tykURLKey  = "TYK_URL"
+	tykModePro            = "pro"
+	tykModeKey            = "TYK_MODE"
+	tykAuthKey            = "TYK_AUTH"
+	tykOrgKey             = "TYK_ORG"
+	tykURLKey             = "TYK_URL"
+	tykOperatorLicenseKey = "TYK_OPERATOR_LICENSEKEY"
 )
 
 // BootstrapTykOperatorSecret bootstrap a Kubernetes Secret utilized by Tyk Operator.
@@ -24,10 +25,11 @@ func (c *Client) BootstrapTykOperatorSecret() error {
 	}
 
 	secretData := map[string][]byte{
-		tykAuthKey: []byte(c.appArgs.Tyk.Admin.Auth),
-		tykOrgKey:  []byte(c.appArgs.Tyk.Org.ID),
-		tykModeKey: []byte(tykModePro),
-		tykURLKey:  []byte(c.appArgs.K8s.DashboardSvcUrl),
+		tykAuthKey:            []byte(c.appArgs.Tyk.Admin.Auth),
+		tykOrgKey:             []byte(c.appArgs.Tyk.Org.ID),
+		tykModeKey:            []byte(tykModePro),
+		tykURLKey:             []byte(c.appArgs.K8s.DashboardSvcUrl),
+		tykOperatorLicenseKey: []byte(c.appArgs.OperatorLicenseKey),
 	}
 
 	objectMeta := metav1.ObjectMeta{Name: c.appArgs.OperatorKubernetesSecretName}
