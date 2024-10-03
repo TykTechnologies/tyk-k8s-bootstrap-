@@ -24,6 +24,8 @@ type Config struct {
 	// OperatorKubernetesSecretName corresponds to the Kubernetes secret name that will be created for Tyk Operator.
 	// Set it to an empty string to disable bootstrapping Kubernetes secret for Tyk Operator.
 	OperatorKubernetesSecretName string
+	// OperatorLicenseKey corresponds to Operator license key
+	OperatorLicenseKey string
 	// DevPortalKubernetesSecretName corresponds to the Kubernetes secret name that will be created for
 	// Tyk Developer Portal. Set it to an empty to string to disable bootstrapping Kubernetes
 	// secret for Tyk Developer Portal.
